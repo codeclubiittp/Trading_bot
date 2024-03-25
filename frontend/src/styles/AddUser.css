@@ -1,0 +1,46 @@
+/* forms */
+.add-user-container {
+    margin: 20px auto;
+    padding: 20px;
+
+}
+
+.add-user-container h1 {
+    width: max-content;
+    margin: 1.5rem auto;
+    color: #12bca2;
+}
+
+.add-user-container form {
+    background: #fff;
+    padding: 20px;
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+.add-user-container form input {
+    display: block;
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    margin: 10px 0 20px 0;
+}
+
+.add-user-container form button {
+    background: var(--primary);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-family: "Poppins";
+    cursor: pointer;
+    width: 8rem;
+    margin-left: 12.5em;
+}
+
+.add-user-container form button:hover {
+    box-shadow: 0 0 2px black;
+    transform: scale(1.01);
+}

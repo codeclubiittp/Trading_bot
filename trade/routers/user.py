@@ -14,13 +14,15 @@ router = APIRouter(
 async def create_user(request: schemas.GetUser):
     return await user.create_user(request)
 
-@router.get('/{user_name}', response_model = schemas.ShowUser, status_code = status.HTTP_200_OK)
+@router.get('/{user_name}', status_code = status.HTTP_200_OK)
 async def show_user(user_name: str):
-    return await user.show_one_user(user_name)
+    data =  await user.show_one_user(user_name)
+    return { 'data': data }
 
-@router.get('/', response_model = List[schemas.ShowUser], status_code = status.HTTP_200_OK)
-async def all_users(current_user: schemas.GetUser = Depends(oauth2.get_current_user)):
-    return await user.show_all_users()
+@router.get('/', status_code = status.HTTP_200_OK)
+async def all_users():
+    data =  await user.show_all_users()
+    return { 'data': data }
 
 @router.put('/{user_name}', response_model = schemas.ShowUser, status_code = status.HTTP_202_ACCEPTED)
 async def update_user(user_name: str, request: schemas.UpdateUser, current_user: schemas.GetUser = Depends(oauth2.get_current_user)):
