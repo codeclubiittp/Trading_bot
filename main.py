@@ -20,7 +20,7 @@ app = FastAPI()
 # Allowing frontend to access the backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=False,  # Set to True if allowing cookies
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers from the frontend

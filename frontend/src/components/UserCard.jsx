@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
-const UserCard = ({ idx, user }) => {
-    // Initialize the navigate function
-    const navigate = useNavigate();
-
+const UserCard = ({ idx, user, account }) => {
     // Functions
     const handleDelete = async () => {
         try {
             const response = await fetch(`http://127.0.01:8000/user/${user.user_name}`, {
                 method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${account.token}`
+                }
             });
 
             if (response.ok) {
-                navigate('/');
+                window.location.reload();
             } else {
                 const errorData = await response.json();
                 throw new Error('Something went wrong, not able to delete!\n' + errorData.message);

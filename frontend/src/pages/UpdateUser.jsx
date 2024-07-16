@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 // styles
 import '../styles/AddUser.css';
 
-const UpdateUser = () => {
+const UpdateUser = ({ account }) => {
     // Initialize state variables, params and functions
     const { id } = useParams();
     const navigate = useNavigate();
@@ -32,7 +32,8 @@ const UpdateUser = () => {
             const response = await fetch(`http://127.0.0.1:8000/user/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${account.token}`
                 },
                 body: JSON.stringify({
                     email: email,

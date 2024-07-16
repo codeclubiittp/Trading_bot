@@ -4,7 +4,7 @@ import '../styles/Home.css';
 // components
 import UserCard from '../components/UserCard';
 
-const Home = () => {
+const Home = ({ account }) => {
     // Initialize state variables
     const [fetchError, setFetchError] = useState(null);
     const [users, setUsers] = useState(null);
@@ -24,8 +24,6 @@ const Home = () => {
                 }
                 const data = await response.json().then((data) => data.data);
                 setUsers(data);
-                console.log("The data getting is : ", data);
-                console.log("The users defined are : ", users);
             } catch (error) {
                 setFetchError(error.message);
             }            
@@ -41,7 +39,7 @@ const Home = () => {
                 <div className="users">
                     <div className="user-grid">
                         {users.map((user, key) => (
-                            <UserCard key={key} idx={key} user={user} />
+                            <UserCard key={key} idx={key} user={user} account={account} />
                         ))}
                     </div>
                 </div>
